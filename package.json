@@ -1,0 +1,24 @@
+{
+  "name": "cronthese",
+  "version": "1.0.0",
+  "description": "trying to backup some things from differents sources",
+  "main": "app.js",
+  "scripts": {
+    "test": "test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gwendoux/cronthese.git"
+  },
+  "keywords": [
+    "cron",
+    "node",
+    "javascript"
+  ],
+  "author": "gwendoux",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gwendoux/cronthese/issues"
+  },
+  "homepage": "https://github.com/gwendoux/cronthese#readme"
+}
