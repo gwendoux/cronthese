@@ -37,7 +37,6 @@
   "homepage": "https://github.com/gwendoux/cronthese#readme",
   "dependencies": {
     "mongoose": "4.4.19",
-    "morgan": "1.7.0",
     "node-schedule": "1.1.0",
     "request-promise": "3.0.0"
   },
