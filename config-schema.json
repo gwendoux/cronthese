@@ -50,8 +50,8 @@
     "format": "*",
     "default": null
   },
-  "pinboard_feed_url": {
-    "doc": "Pinboard xml feed url",
+  "Pinboard_API_ENDPOINT": {
+    "doc": "Pinboard recent entries",
     "format": "*",
     "default": null
   },
