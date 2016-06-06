@@ -2,7 +2,9 @@
 
 const config = require('./lib/config');
 const logger = config.getLogger();
-// const schedule = require('node-schedule');
+const pinboard = require('./lib/pinboard');
+
+const schedule = require('node-schedule');
 const request = require('request-promise');
 const mongoose = require('mongoose');
 
@@ -35,11 +37,8 @@ db.once('open', function() {
 
     var Links = mongoose.model('Links', linksSchema);
 
-// commented out when ready to run
-// schedule.scheduleJob('*/2 * * * *', function(){
-
-    request(Pinboard_Options)
-        .then(function (data) {
+    // schedule.scheduleJob('*/2 * * * *', function(){
+        request(Pinboard_Options).then(function (data) {
             return JSON.parse(data).posts;
         }).then(function(content) {
             content.forEach(function(item) {
@@ -51,32 +50,10 @@ db.once('open', function() {
                     tags: item.tags,
                     date: item.time
                 });
-                // need to checked for duplicates
-                // if duplicates update data
-                // else save it
-                Links.count({id: item.hash})
-                    .then(function(count){
-                        if(!count) {
-                            link.save()
-                                .then(function() {
-                                    logger.debug('item: "' + link.title + '" saved');
-                                }).catch(function(err) {
-                                    logger.debug(err);
-                                });
-                        } else {
-                            logger.info('already saved');
-                        }
-                    }).catch(function(err) {
-                        logger.debug(err);
-                    });
-
-            });
-        }).then(function() {
-            Links.count({}, function(err, c) {
-                logger.info('Count is ' + c);
+                pinboard.saveNew(Links, link, item.hash)
             });
         }).catch(function (err) {
             logger.error(err.message);
         });
+    });
 // });
-});
