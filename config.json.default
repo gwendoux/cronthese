@@ -5,5 +5,5 @@
   "Instagram_API_ENDPOINT": "CHANGE_ME",
   "Instagram_ACCESS_TOKEN": "CHANGE_ME",
   "Pinboard_API_ENDPOINT": "CHANGE_ME",
-  "pinboard_API_TOKEN": "CHANGE_ME"
+  "Pinboard_API_TOKEN": "CHANGE_ME"
 }
