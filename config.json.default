@@ -1,13 +1,9 @@
 {
   "env": "development",
   "log_level": "trace",
-  "port": 8015,
-  "instagram_User_ID": "CHANGE_ME",
-  "instagram_CLIENT_ID": "CHANGE_ME",
-  "instagram_CLIENT_SECRET": "CHANGE_ME",
-  "instagram_WEBSITE_URL": "CHANGE_ME",
-  "instagram_REDIRECT_URI": "CHANGE_ME",
-  "instagram_ACCESS_TOKEN": "CHANGE_ME",
+  "port": 8018,
+  "Instagram_API_ENDPOINT": "CHANGE_ME",
+  "Instagram_ACCESS_TOKEN": "CHANGE_ME",
   "Pinboard_API_ENDPOINT": "CHANGE_ME",
   "pinboard_API_TOKEN": "CHANGE_ME"
 }
