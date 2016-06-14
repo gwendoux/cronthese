@@ -1,48 +1,38 @@
 'use strict';
-
+// const schedule = require('node-schedule');
+const request = require('request-promise');
 const config = require('./lib/config');
 const logger = config.getLogger();
-const pinboard = require('./lib/pinboard');
 const appConfig = require('./lib/config-app');
-const schedule = require('node-schedule');
-const request = require('request-promise');
-const mongoose = require('mongoose');
+const db = require('./lib/mongoose');
+const build = require('./lib/build');
+const actions = require('./lib/actions');
+const filter = require('./lib/filter');
 
-mongoose.connect('mongodb://localhost/links');
-
-var db = mongoose.connection;
-db.on('error', logger.error.bind(console, 'connection error:'));
-db.once('open', function() {
-    logger.info('db connected');
-
-    var linksSchema = mongoose.Schema({
-        id: String,
-        title: String,
-        description: String,
-        url: String,
-        tags: String,
-        date: Date
+// schedule for photos every 2 minutes
+// schedule.scheduleJob('*/2 * * * *', function(){
+request(appConfig.pinboard).then(function (resp) {
+    return JSON.parse(resp).posts;
+}).then(function(content) {
+    content.forEach(function(item) {
+        actions.saveNew(db.Links, build.schemaLinks(db.Links, item), item.hash);
     });
-
-    var Links = mongoose.model('Links', linksSchema);
-
-    schedule.scheduleJob('*/2 * * * *', function(){
-        request(appConfig.pinboard).then(function (data) {
-            return JSON.parse(data).posts;
-        }).then(function(content) {
-            content.forEach(function(item) {
-                var link = new Links({
-                    id: item.hash,
-                    title: item.description,
-                    description: item.extended,
-                    url: item.href,
-                    tags: item.tags,
-                    date: item.time
-                });
-                pinboard.saveNew(Links, link, item.hash);
-            });
-        }).catch(function (err) {
-            logger.error(err.message);
-        });
-    });
+}).catch(function (err) {
+    logger.error(err.message);
 });
+// });
+// schedule for photos every 30 minutes
+// schedule.scheduleJob('* */30 * * *', function(){
+request(appConfig.instagram).then(function (resp) {
+    return JSON.parse(resp).data;
+}).then(function(content) {
+    return (filter.filterByTag(content, 'coffeeoftheday'));
+}).then(function(filteredContent) {
+    filteredContent.forEach(function(item) {
+        actions.saveNew(db.Coffee, build.schemaCoffee(db.Coffee, item), item.id);
+    });
+}).catch(function (err) {
+    logger.error(err.message);
+});
+// });
+// });
