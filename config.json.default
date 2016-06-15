@@ -2,8 +2,8 @@
   "env": "development",
   "log_level": "trace",
   "port": 8018,
-  "Instagram_API_ENDPOINT": "CHANGE_ME",
+  "Instagram_API_ENDPOINT": "https://api.instagram.com/v1/users/self/media/recent/",
   "Instagram_ACCESS_TOKEN": "CHANGE_ME",
-  "Pinboard_API_ENDPOINT": "CHANGE_ME",
+  "Pinboard_API_ENDPOINT": "https://api.pinboard.in/v1/posts/recent",
   "Pinboard_API_TOKEN": "CHANGE_ME"
 }

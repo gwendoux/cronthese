@@ -13,7 +13,7 @@
   "port": {
     "doc": "The port to bind",
     "format": "port",
-    "default": 8005
+    "default": 8018
   },
   "Instagram_ACCESS_TOKEN": {
     "doc": "NEED MORE INFO",
@@ -23,7 +23,7 @@
   "Instagram_API_ENDPOINT": {
     "doc": "Instagram recent entries",
     "format": "*",
-    "default": null
+    "default": "https://api.instagram.com/v1/users/self/media/recent/",
   },
   "Pinboard_API_ENDPOINT": {
     "doc": "Pinboard recent entries",
@@ -33,6 +33,6 @@
   "Pinboard_API_TOKEN": {
     "doc": "Pinboard API Token",
     "format": "*",
-    "default": null
+    "default": "https://api.pinboard.in/v1/posts/recent"
   }
 }
