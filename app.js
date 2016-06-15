@@ -1,6 +1,7 @@
 'use strict';
-// const schedule = require('node-schedule');
+const schedule = require('node-schedule');
 const request = require('request-promise');
+
 const config = require('./lib/config');
 const logger = config.getLogger();
 const appConfig = require('./lib/config-app');
