@@ -37,14 +37,14 @@
   "homepage": "https://github.com/gwendoux/cronthese#readme",
   "dependencies": {
     "moment": "2.13.0",
-    "mongoose": "4.4.19",
+    "mongoose": "4.5.0",
     "node-schedule": "1.1.0",
     "request-promise": "3.0.0"
   },
   "devDependencies": {
     "commander": "2.9.0",
     "convict": "1.4.0",
-    "eslint": "2.11.1",
+    "eslint": "2.12.0",
     "istanbul": "0.4.3",
     "mocha": "2.5.3",
     "must": "0.13.1",
