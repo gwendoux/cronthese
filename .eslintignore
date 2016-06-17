@@ -3,6 +3,8 @@ node_modules/*
 bower_components/*
 dist/*
 dev/*
+scripts/*
+backup/*
 **/vendor/*
 **/vendors/*
 **/coverage/*
