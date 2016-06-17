@@ -5,5 +5,8 @@
   "Instagram_API_ENDPOINT": "https://api.instagram.com/v1/users/self/media/recent/",
   "Instagram_ACCESS_TOKEN": "CHANGE_ME",
   "Pinboard_API_ENDPOINT": "https://api.pinboard.in/v1/posts/recent",
-  "Pinboard_API_TOKEN": "CHANGE_ME"
+  "Pinboard_API_TOKEN": "CHANGE_ME",
+  "AWS_Bucket": "not-stagram",
+  "AWS_ACCESSKEYID": "AKIAJWOEPQDGJ47RTGLQ",
+  "AWS_SECRET_ACCESS_KEY": "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",
 }
