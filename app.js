@@ -8,6 +8,8 @@ const appConfig = require('./lib/config-app');
 const db = require('./lib/mongoose');
 const build = require('./lib/build');
 const actions = require('./lib/actions');
+const aws = require('./lib/aws');
+const url = require('./lib/url');
 const filter = require('./lib/filter');
 
 // schedule for photos every 2 minutes
@@ -23,16 +25,18 @@ schedule.scheduleJob('*/2 * * * *', function(){
     });
 });
 // schedule for photos every 30 minutes
-schedule.scheduleJob('* */30 * * *', function(){
-    request(appConfig.instagram).then(function (resp) {
-        return JSON.parse(resp).data;
-    }).then(function(content) {
-        return (filter.filterByTag(content, 'coffeeoftheday'));
-    }).then(function(filteredContent) {
-        filteredContent.forEach(function(item) {
-            actions.saveNew(db.Coffee, build.schemaCoffee(db.Coffee, item), item.id);
-        });
-    }).catch(function (err) {
-        logger.error(err.message);
+// schedule.scheduleJob('* */30 * * *', function(){
+request(appConfig.instagram).then(function (resp) {
+    return JSON.parse(resp).data;
+}).then(function(content) {
+    return (filter.filterByTag(content, 'coffeeoftheday'));
+}).then(function(filteredContent) {
+    filteredContent.forEach(function(item) {
+        // logger.info(url.clean(item.images.standard_resolution.url));
+        actions.saveNew(db.Coffee, build.schemaCoffee(db.Coffee, item), item.id);
+        aws.saveImage(item.id, url.clean(item.images.standard_resolution.url));
     });
+}).catch(function (err) {
+    logger.error(err.message);
 });
+// });
