@@ -40,12 +40,17 @@
     "format": "*",
     "default": "not-stagram"
   },
-  "accessKeyId": {
+  "CloudFront_id": {
+    "doc": "Amazon Web Service CloudFront ID",
+    "format": "*",
+    "default": null
+  },
+  "AWS_ACCESS_KEY_ID": {
     "doc": "Amazon Web Service Secret Access key",
     "format": "*",
     "default": null
   },
-  "secretAccessKey": {
+  "AWS_SECRET_ACCESS_KEY": {
     "doc": "Amazon Web Service Access key",
     "format": "*",
     "default": null

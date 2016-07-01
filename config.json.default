@@ -7,6 +7,7 @@
   "Pinboard_API_ENDPOINT": "https://api.pinboard.in/v1/posts/recent",
   "Pinboard_API_TOKEN": "CHANGE_ME",
   "AWS_Bucket": "not-stagram",
-  "accessKeyId": "CHANGE_ME",
-  "secretAccessKey": "CHANGE_ME"
+  CloudFront_id: "CHANGE_ME",
+  "AWS_ACCESS_KEY_ID": "CHANGE_ME",
+  "AWS_SECRET_ACCESS_KEY": "CHANGE_ME"
 }
