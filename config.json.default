@@ -8,5 +8,5 @@
   "Pinboard_API_TOKEN": "CHANGE_ME",
   "AWS_Bucket": "not-stagram",
   "accessKeyId": "CHANGE_ME",
-  "secretAccessKey": "CHANGE_ME",
+  "secretAccessKey": "CHANGE_ME"
 }
