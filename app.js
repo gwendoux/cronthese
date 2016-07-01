@@ -7,7 +7,7 @@ const logger = config.getLogger();
 const appConfig = require('./lib/config-app');
 const db = require('./lib/mongoose');
 const build = require('./lib/build');
-const actions = require('./lib/actions');
+const save = require('./lib/save');
 const aws = require('./lib/aws');
 const url = require('./lib/url');
 const filter = require('./lib/filter');
@@ -18,7 +18,7 @@ schedule.scheduleJob('*/2 * * * *', function(){
         return JSON.parse(resp).posts;
     }).then(function(content) {
         content.forEach(function(item) {
-            actions.saveNew(db.Links, build.schemaLinks(db.Links, item), item.hash);
+            save.saveNew(db.Links, build.schemaLinks(db.Links, item), item.hash);
         });
     }).catch(function (err) {
         logger.error(err.message);
@@ -32,9 +32,8 @@ request(appConfig.instagram).then(function (resp) {
     return (filter.filterByTag(content, 'coffeeoftheday'));
 }).then(function(filteredContent) {
     filteredContent.forEach(function(item) {
-        // logger.info(url.clean(item.images.standard_resolution.url));
-        actions.saveNew(db.Coffee, build.schemaCoffee(db.Coffee, item), item.id);
-        aws.saveImage(item.id, url.clean(item.images.standard_resolution.url));
+        save.saveNew(db.Coffee, build.schemaCoffee(db.Coffee, item), item.id);
+        // aws.saveImage(item.id, url.clean(item.images.standard_resolution.url));
     });
 }).catch(function (err) {
     logger.error(err.message);
