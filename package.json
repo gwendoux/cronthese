@@ -33,7 +33,7 @@
   "dependencies": {
     "aws-bluebird": "1.0.0",
     "moment": "2.13.0",
-    "mongoose": "4.5.2",
+    "mongoose": "4.5.3",
     "node-schedule": "1.1.1",
     "request-promise": "3.0.0"
   },
