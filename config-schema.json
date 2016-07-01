@@ -40,13 +40,13 @@
     "format": "*",
     "default": "not-stagram"
   },
-  "AWS_ACCESSKEYID": {
-    "doc": "Amazon Web Service Access key",
+  "accessKeyId": {
+    "doc": "Amazon Web Service Secret Access key",
     "format": "*",
     "default": null
   },
-  "AWS_SECRET_ACCESS_KEY": {
-    "doc": "Amazon Web Service Secret Access key",
+  "secretAccessKey": {
+    "doc": "Amazon Web Service Access key",
     "format": "*",
     "default": null
   }
