@@ -22,7 +22,7 @@ schedule.scheduleJob('*/2 * * * *', function(){
             save.saveNew(db.Links, build.schemaLinks(db.Links, item), item.hash);
         });
     }).catch(function (err) {
-        logger.error(err.message);
+        logger.error('Pinboard:', err.message);
     });
 });
 // schedule for photos every 30 minutes
@@ -36,6 +36,6 @@ schedule.scheduleJob('* */30 * * *', function(){
             save.saveNew(db.Coffee, build.schemaCoffee(db.Coffee, item), item.id);
         });
     }).catch(function (err) {
-        logger.error(err.message);
+        logger.error('Instagram:', err.message);
     });
 });
