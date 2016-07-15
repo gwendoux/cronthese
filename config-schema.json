@@ -34,5 +34,25 @@
     "doc": "Pinboard API Token",
     "format": "*",
     "default": "https://api.pinboard.in/v1/posts/recent"
+  },
+  "AWS_Bucket": {
+    "doc": "Amazon Web Service Bucket name",
+    "format": "*",
+    "default": "not-stagram"
+  },
+  "CloudFront_id": {
+    "doc": "Amazon Web Service CloudFront ID",
+    "format": "*",
+    "default": null
+  },
+  "AWS_ACCESS_KEY_ID": {
+    "doc": "Amazon Web Service Secret Access key",
+    "format": "*",
+    "default": null
+  },
+  "AWS_SECRET_ACCESS_KEY": {
+    "doc": "Amazon Web Service Access key",
+    "format": "*",
+    "default": null
   }
 }

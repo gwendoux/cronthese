@@ -7,7 +7,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "test": " echo \"no test found. You should write tests\"",
-    "prestart:watch": "npm run lint",
+    "prestart:watch": "npm run lint:fix",
     "start": "node app.js",
     "start:watch": "nodemon",
     "deploy:init": "pm2 ecosystem",
@@ -32,8 +32,9 @@
   },
   "homepage": "https://github.com/gwendoux/cronthese#readme",
   "dependencies": {
+    "aws-bluebird": "1.0.0",
     "moment": "2.13.0",
-    "mongoose": "4.5.2",
+    "mongoose": "4.5.3",
     "node-schedule": "1.1.1",
     "request-promise": "3.0.0"
   },

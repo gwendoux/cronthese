@@ -7,19 +7,22 @@ const logger = config.getLogger();
 const appConfig = require('./lib/config-app');
 const db = require('./lib/mongoose');
 const build = require('./lib/build');
-const actions = require('./lib/actions');
+const save = require('./lib/save');
 const filter = require('./lib/filter');
 
-// schedule for photos every 2 minutes
-schedule.scheduleJob('*/2 * * * *', function(){
+// schedule for links every 5 minutes
+schedule.scheduleJob('*/5 * * * *', function(){
     request(appConfig.pinboard).then(function (resp) {
+        if(resp.indexOf('<') > -1) {
+            throw new Error('API pinboard seems broken');
+        }
         return JSON.parse(resp).posts;
     }).then(function(content) {
         content.forEach(function(item) {
-            actions.saveNew(db.Links, build.schemaLinks(db.Links, item), item.hash);
+            save.saveNew(db.Links, build.schemaLinks(db.Links, item), item.hash);
         });
     }).catch(function (err) {
-        logger.error(err.message);
+        logger.error('Pinboard:', err.message);
     });
 });
 // schedule for photos every 30 minutes
@@ -30,9 +33,9 @@ schedule.scheduleJob('* */30 * * *', function(){
         return (filter.filterByTag(content, 'coffeeoftheday'));
     }).then(function(filteredContent) {
         filteredContent.forEach(function(item) {
-            actions.saveNew(db.Coffee, build.schemaCoffee(db.Coffee, item), item.id);
+            save.saveNew(db.Coffee, build.schemaCoffee(db.Coffee, item), item.id);
         });
     }).catch(function (err) {
-        logger.error(err.message);
+        logger.error('Instagram:', err.message);
     });
 });
