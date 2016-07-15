@@ -10,8 +10,8 @@ const build = require('./lib/build');
 const save = require('./lib/save');
 const filter = require('./lib/filter');
 
-// schedule for links every 2 minutes
-schedule.scheduleJob('*/2 * * * *', function(){
+// schedule for links every 5 minutes
+schedule.scheduleJob('*/5 * * * *', function(){
     request(appConfig.pinboard).then(function (resp) {
         if(resp.indexOf('<') > -1) {
             throw new Error('API pinboard seems broken');
