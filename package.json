@@ -14,7 +14,8 @@
     "deploy:setup": "pm2 deploy ecosystem.json production setup",
     "deploy": "pm2 deploy ecosystem.json production",
     "postinstall": "npm prune",
-    "export:db": "mkdirp ./backup/ && mongoexport --db coffee --collection coffees --out ./backup/coffee-coffees.json && mongoexport --db links --collection links --out ./backup/links-links.json  "
+    "export:db": "mkdirp ./backup/ && mongoexport --db coffee --collection coffees --out ./backup/coffee-coffees.json && mongoexport --db links --collection links --out ./backup/links-links.json",
+    "import:db": "mongoimport --db coffee --collection coffees --out ./backup/coffee-coffees.json && mongoexport --db links --collection links --out ./backup/links-links.json"
   },
   "repository": {
     "type": "git",
