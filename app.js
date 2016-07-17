@@ -25,8 +25,8 @@ schedule.scheduleJob('*/5 * * * *', function(){
         logger.error('Pinboard:', err.message);
     });
 });
-// schedule for photos every 30 minutes
-schedule.scheduleJob('* */30 * * *', function(){
+// schedule for photos every 0 and 30th minute past the 0, 3, 6, 9, 12, 15, 18 and 21st hour.
+schedule.scheduleJob('*/30 */3 * * *', function(){
     request(appConfig.instagram).then(function (resp) {
         return JSON.parse(resp).data;
     }).then(function(content) {
