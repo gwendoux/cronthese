@@ -13,9 +13,6 @@ const filter = require('./lib/filter');
 // schedule for links every 5 minutes
 schedule.scheduleJob('*/5 * * * *', function(){
     request(appConfig.pinboard).then(function (resp) {
-        if(resp.indexOf('<') > -1) {
-            throw new Error('API pinboard seems broken');
-        }
         return JSON.parse(resp).posts;
     }).then(function(content) {
         content.forEach(function(item) {
